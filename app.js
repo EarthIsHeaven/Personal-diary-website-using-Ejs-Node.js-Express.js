@@ -29,15 +29,15 @@ const content = {
 };
 
 app.get("/", (req, res) => {
-  res.render("home.ejs", content.home);
+  res.render("home.ejs",{ startingContent: content.home.startingContent, posts: posts } );
 });
 
 app.get("/about", (req, res) => {
-  res.render("about.ejs", content.about);
+  res.render("about.ejs",{ about: content.about.aboutContent } );
 });
 
 app.get("/contact", (req, res) => {
-  res.render("contact.ejs", content.contact);
+  res.render("contact.ejs",{ contact: content.contact.contactContent });
 });
 
 app.get("/compose", (req, res) => {
@@ -69,5 +69,5 @@ app.get("/posts/:topic", (req, res) => {
 const PORT = process.env.PORT ?? 3000;
 
 app.listen(PORT, () => {
-  console.log("Server listening on port ${PORT}");
+  console.log(`Server listening on port ${PORT}`);
 });
